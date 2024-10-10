@@ -1,0 +1,34 @@
+<div class="container ">
+    <h2><mat-icon class="back" routerLink="/policy/policy-list">arrow_back</mat-icon> Maintenance</h2>
+    <form [formGroup]="policyDataformGroup" (ngSubmit)="submitData()">
+        <div class="row border mx-0">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 py-2">
+                <label for="">Policy Title <sup>*</sup></label>
+                <input type="text" formControlName="policyTitle" class="form-control" placeholder="Enter Policy Title">
+                <div
+                    *ngIf="policyDataformGroup.controls['policyTitle'].touched && policyDataformGroup.controls['policyTitle'].dirty && policyDataformGroup.controls['policyTitle'].hasError('required') && !isSubmitted">
+                    <p class="error-message">Policy Title is mandatory</p>
+                </div>
+                <div *ngIf="isSubmitted && policyDataformGroup.controls['policyTitle'].hasError('required')">
+                    <p class="error-message">Policy Title is mandatory</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 py-2">
+                <label for=""> Description <sup>*</sup></label>
+                <input type="text" formControlName="description" class="form-control"
+                    placeholder="Enter  Description" />
+                <div
+                    *ngIf="policyDataformGroup.controls['description'].touched && policyDataformGroup.controls['description'].dirty && policyDataformGroup.controls['description'].hasError('required') && !isSubmitted">
+                    <p class="error-message">Description is mandatory</p>
+                </div>
+                <div *ngIf="isSubmitted && policyDataformGroup.controls['description'].hasError('required')">
+                    <p class="error-message">Description is mandatory</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 d-flex justify-content-end py-2">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
